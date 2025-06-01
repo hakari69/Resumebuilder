@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevResumeBuilder | AI-Powered Resume & Cover Letter Generator for Developers</title>
+    <meta name="description" content="Create professional, industry-specific resumes and cover letters in minutes with our AI-powered builder. Designed specifically for software engineers and developers.">
+    <meta name="keywords" content="resume builder, cover letter generator, AI resume, developer resume, software engineer resume">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devresumebuilder.com/">
+    <meta property="og:title" content="DevResumeBuilder | AI-Powered Resume & Cover Letter Generator">
+    <meta property="og:description" content="Create professional, industry-specific resumes and cover letters in minutes with our AI-powered builder.">
+    <meta property="og:image" content="https://devresumebuilder.com/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://devresumebuilder.com/">
+    <meta property="twitter:title" content="DevResumeBuilder | AI-Powered Resume & Cover Letter Generator">
+    <meta property="twitter:description" content="Create professional, industry-specific resumes and cover letters in minutes with our AI-powered builder.">
+    <meta property="twitter:image" content="https://devresumebuilder.com/social-preview.jpg">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "DevResumeBuilder",
+      "url": "https://devresumebuilder.com/",
+      "applicationCategory": "Productivity",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1247"
+      }
+    }
+    </script>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--primary) !important;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 5rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-control {
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+        
+        .result-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .resume-preview {
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 2rem;
+            min-height: 500px;
+            background: white;
+        }
+        
+        .resume-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--light);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s;
+            margin-right: 0.5rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .form-container, .result-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-file-alt me-2"></i>DevResumeBuilder
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resume-builder">Resume Builder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cover-letter">Cover Letter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">AI-Powered Resume Builder for Developers</h1>
+                    <p class="hero-subtitle">Create professional, industry-specific resumes and cover letters in minutes. Stand out in the competitive tech job market.</p>
+                    <a href="#resume-builder" class="btn btn-primary">
+                        <i class="fas fa-bolt me-2"></i>Generate My Resume
+                    </a>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block text-center">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3e%3crect width='400' height='300' fill='%23ffffff' opacity='0.2' rx='15'/%3e%3cpath d='M80 70 L320 70 M80 100 L320 100 M80 130 L320 130 M80 160 L200 160 M80 190 L280 190' stroke='%23ffffff' stroke-width='3'/%3e%3ccircle cx='50' cy='50' r='20' fill='%234361ee'/%3e%3c/svg%3e" alt="Resume preview" class="img-fluid" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our AI Resume Builder</h2>
+                <p>Designed specifically for software engineers and developers</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Powered</h3>
+                        <p>Our AI analyzes thousands of successful tech resumes to create the perfect document for your job search.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Tech Industry Focused</h3>
+                        <p>Custom templates and content optimized for software engineering roles, from startups to FAANG companies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h3>Instant Download</h3>
+                        <p>Get your professionally formatted resume in PDF format with one click. No design skills required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from developers who landed their dream jobs</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3e%3ccircle cx='35' cy='35' r='35' fill='%234361ee'/%3e%3c/svg%3e" alt="Sarah Johnson" class="testimonial-img" loading="lazy">
+                            <div>
+                                <h4 class="mb-0">Sarah Johnson</h4>
+                                <p class="text-muted mb-0">Senior Frontend Developer</p>
+                            </div>
+                        </div>
+                        <p>"After using DevResumeBuilder, I got 3x more interview calls. The AI suggestions helped me highlight my skills effectively."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3e%3ccircle cx='35' cy='35' r='35' fill='%237209b7'/%3e%3c/svg%3e" alt="Michael Chen" class="testimonial-img" loading="lazy">
+                            <div>
+                                <h4 class="mb-0">Michael Chen</h4>
+                                <p class="text-muted mb-0">Backend Engineer</p>
+                            </div>
+                        </div>
+                        <p>"The industry-specific templates helped me create a resume that spoke directly to hiring managers in the tech industry."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3e%3ccircle cx='35' cy='35' r='35' fill='%234cc9f0'/%3e%3c/svg%3e" alt="David Rodriguez" class="testimonial-img" loading="lazy">
+                            <div>
+                                <h4 class="mb-0">David Rodriguez</h4>
+                                <p class="text-muted mb-0">Full Stack Developer</p>
+                            </div>
+                        </div>
+                        <p>"I landed a job at Google after using the AI-powered resume builder. The ATS optimization made all the difference!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Builder Section -->
+    <section id="resume-builder" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Resume Builder</h2>
+                <p>Create your professional developer resume in minutes</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="resumeForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="John Doe" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="jobTitle" class="form-label">Job Title / Role</label>
+                            <input type="text" class="form-control" id="jobTitle" placeholder="Senior Frontend Developer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" placeholder="San Francisco, CA">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="linkedin" class="form-label">LinkedIn Profile</label>
+                            <input type="url" class="form-control" id="linkedin" placeholder="https://linkedin.com/in/johndoe">
+                        </div>
+                        <div class="col-12">
+                            <label for="summary" class="form-label">Professional Summary</label>
+                            <textarea class="form-control" id="summary" rows="3" placeholder="Experienced software engineer with 5+ years in web development..."></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="skills" class="form-label">Skills (comma separated)</label>
+                            <textarea class="form-control" id="skills" rows="2" placeholder="JavaScript, React, Node.js, Python, AWS" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Experience</label>
+                            <div class="experience-entry mb-3">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Job Title" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Company" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Start Date (MM/YYYY)" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="End Date (MM/YYYY) or Present">
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="2" placeholder="Responsibilities and achievements"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline">
+                                <i class="fas fa-plus me-1"></i>Add Another Position
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Education</label>
+                            <div class="education-entry mb-3">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Degree" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Institution" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Graduation Year" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Location">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline">
+                                <i class="fas fa-plus me-1"></i>Add Another Degree
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <label for="certifications" class="form-label">Certifications</label>
+                            <textarea class="form-control" id="certifications" rows="2" placeholder="AWS Certified Developer, Google Cloud Professional"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tone" class="form-label">Resume Tone</label>
+                            <select class="form-select" id="tone" required>
+                                <option value="formal">Formal</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="assertive">Assertive</option>
+                                <option value="technical">Technical</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="experienceLevel" class="form-label">Experience Level</label>
+                            <select class="form-select" id="experienceLevel" required>
+                                <option value="entry">Entry Level</option>
+                                <option value="mid">Mid-Level (2-5 years)</option>
+                                <option value="senior">Senior (5+ years)</option>
+                                <option value="executive">Executive</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-bolt me-2"></i>Generate Resume
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="result-container" id="resumeResult">
+                <h3 class="text-center mb-4">Your AI-Generated Resume</h3>
+                <div class="resume-preview">
+                    <div class="resume-header">
+                        <h1 id="resumeName">John Doe</h1>
+                        <p id="resumeTitle" class="lead">Senior Frontend Developer</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <span id="resumeEmail">john@example.com</span>
+                            <span id="resumePhone">(123) 456-7890</span>
+                            <span id="resumeLocation">San Francisco, CA</span>
+                            <span id="resumeLinkedin">linkedin.com/in/johndoe</span>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h4>Professional Summary</h4>
+                        <p id="resumeSummary">Experienced software engineer with 5+ years in web development specializing in React and Node.js. Proven track record of delivering scalable applications for Fortune 500 companies.</p>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h4>Skills</h4>
+                        <div id="resumeSkills" class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-primary">JavaScript</span>
+                            <span class="badge bg-primary">React</span>
+                            <span class="badge bg-primary">Node.js</span>
+                            <span class="badge bg-primary">TypeScript</span>
+                            <span class="badge bg-primary">AWS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h4>Experience</h4>
+                        <div id="resumeExperience">
+                            <h5>Senior Frontend Developer</h5>
+                            <p><strong>Tech Innovations Inc.</strong> | Jan 2020 - Present</p>
+                            <ul>
+                                <li>Led development of customer dashboard using React and Redux</li>
+                                <li>Improved application performance by 40% through code optimization</li>
+                                <li>Mentored junior developers and conducted code reviews</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h4>Education</h4>
+                        <div id="resumeEducation">
+                            <h5>B.S. Computer Science</h5>
+                            <p><strong>Stanford University</strong> | 2018</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i>Download as PDF
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-copy me-2"></i>Copy Text
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-share-alt me-2"></i>Share Link
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cover Letter Section -->
+    <section id="cover-letter" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Cover Letter Generator</h2>
+                <p>Create personalized cover letters that get noticed</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="letterForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="letterName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="letterName" placeholder="John Doe" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="letterEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="letterEmail" placeholder="john@example.com" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="position" class="form-label">Position Applying For</label>
+                            <input type="text" class="form-control" id="position" placeholder="Senior Frontend Developer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="company" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="company" placeholder="Google" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="background" class="form-label">Your Background</label>
+                            <textarea class="form-control" id="background" rows="3" placeholder="I have 5+ years of experience in web development with expertise in React..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="whyHire" class="form-label">Why should they hire you?</label>
+                            <textarea class="form-control" id="whyHire" rows="3" placeholder="I've successfully led teams to deliver complex applications..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="letterTone" class="form-label">Cover Letter Tone</label>
+                            <select class="form-select" id="letterTone" required>
+                                <option value="formal">Formal</option>
+                                <option value="friendly">Friendly</option>
+                                <option value="enthusiastic">Enthusiastic</option>
+                                <option value="technical">Technical</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-bolt me-2"></i>Generate Cover Letter
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="result-container" id="letterResult">
+                <h3 class="text-center mb-4">Your AI-Generated Cover Letter</h3>
+                <div class="resume-preview">
+                    <div class="text-end mb-4" id="letterDate">October 26, 2023</div>
+                    
+                    <div id="letterCompany" class="mb-4">
+                        <h4>Hiring Manager</h4>
+                        <h4>Google</h4>
+                        <p>1600 Amphitheatre Parkway</p>
+                        <p>Mountain View, CA 94043</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4>Dear Hiring Manager,</h4>
+                        <p id="letterContent">
+                            I am writing to express my interest in the Senior Frontend Developer position at Google. With 5+ years of experience in web development and expertise in React, Node.js, and modern JavaScript frameworks, I am confident in my ability to contribute to your team's success.
+                            
+                            In my previous role at Tech Innovations Inc., I led the development of a customer dashboard that improved user engagement by 35%. My experience with performance optimization and mentoring junior developers aligns well with the requirements for this position.
+                            
+                            I am particularly drawn to Google's innovative approach to solving complex problems and would be honored to contribute to your mission of organizing the world's information.
+                            
+                            Thank you for considering my application. I look forward to the possibility of discussing how my skills and experiences align with the needs of your team.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <p>Sincerely,</p>
+                        <p id="letterSignature">John Doe</p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i>Download as PDF
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-copy me-2"></i>Copy Text
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about our resume builder</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            Is this resume builder really free?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, our basic resume builder is completely free to use. You can create, download, and share your resume without any cost. We also offer premium features for users who need advanced customization and analytics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How does the AI improve my resume?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our AI analyzes thousands of successful tech resumes to identify patterns and keywords that get noticed by hiring managers and applicant tracking systems (ATS). It suggests improvements to your content, structure, and wording to maximize your chances of getting interviews.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I customize the design of my resume?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer several professional templates designed specifically for software engineers. You can choose different layouts, color schemes, and fonts to match your personal brand.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do you ensure my data is secure?
+                        </div>
+                        <div class="faq-answer">
+                            <p>We take privacy seriously. Your data is encrypted and never shared with third parties. You can delete your information at any time through your account settings.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Will my resume pass through ATS systems?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! Our resumes are optimized for Applicant Tracking Systems used by 98% of Fortune 500 companies. We ensure proper formatting, keyword placement, and structure to maximize your resume's compatibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="h4 mb-3">DevResumeBuilder</h3>
+                    <p>Create professional resumes and cover letters that get you hired in the tech industry.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h3 class="h4 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#resume-builder">Resume Builder</a></li>
+                        <li class="mb-2"><a href="#cover-letter">Cover Letter</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h3 class="h4 mb-3">Resources</h3>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Resume Examples</a></li>
+                        <li class="mb-2"><a href="#">Cover Letter Samples</a></li>
+                        <li class="mb-2"><a href="#">Career Tips</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h3 class="h4 mb-3">Newsletter</h3>
+                    <p>Subscribe for career tips and resume building strategies.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p>&copy; 2023 DevResumeBuilder. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>
+                        <a href="#" class="footer-links me-3">Privacy Policy</a>
+                        <a href="#" class="footer-links">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Handle form submissions
+        document.getElementById('resumeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const jobTitle = document.getElementById('jobTitle').value;
+            const location = document.getElementById('location').value;
+            const phone = document.getElementById('phone').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const summary = document.getElementById('summary').value || "Experienced software engineer with expertise in modern web technologies.";
+            const skills = document.getElementById('skills').value;
+            
+            // Update resume preview
+            document.getElementById('resumeName').textContent = fullName;
+            document.getElementById('resumeTitle').textContent = jobTitle;
+            document.getElementById('resumeEmail').textContent = email;
+            document.getElementById('resumePhone').textContent = phone;
+            document.getElementById('resumeLocation').textContent = location;
+            document.getElementById('resumeLinkedin').textContent = linkedin;
+            document.getElementById('resumeSummary').textContent = summary;
+            
+            // Update skills
+            const skillsContainer = document.getElementById('resumeSkills');
+            skillsContainer.innerHTML = '';
+            skills.split(',').forEach(skill => {
+                const trimmedSkill = skill.trim();
+                if(trimmedSkill) {
+                    const badge = document.createElement('span');
+                    badge.className = 'badge bg-primary';
+                    badge.textContent = trimmedSkill;
+                    skillsContainer.appendChild(badge);
+                }
+            });
+            
+            // Generate unique URL
+            const uniqueId = 'res-' + Math.random().toString(36).substr(2, 9);
+            const uniqueUrl = window.location.origin + '/resume/' + uniqueId;
+            
+            // Save to localStorage
+            const resumeData = {
+                fullName,
+                email,
+                jobTitle,
+                location,
+                phone,
+                linkedin,
+                summary,
+                skills,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem(uniqueId, JSON.stringify(resumeData));
+            
+            // Show result section
+            document.getElementById('resumeResult').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('resumeResult').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.getElementById('letterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('letterName').value;
+            const email = document.getElementById('letterEmail').value;
+            const position = document.getElementById('position').value;
+            const company = document.getElementById('company').value;
+            const background = document.getElementById('background').value;
+            const whyHire = document.getElementById('whyHire').value;
+            
+            // Update letter preview
+            document.getElementById('letterSignature').textContent = fullName;
+            document.getElementById('letterCompany').innerHTML = `
+                <h4>Hiring Manager</h4>
+                <h4>${company}</h4>
+            `;
+            
+            // Set current date
+            const today = new Date();
+            document.getElementById('letterDate').textContent = today.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Generate content
+            document.getElementById('letterContent').innerHTML = `
+                <p>I am writing to express my interest in the ${position} position at ${company}. ${background}</p>
+                <p>${whyHire}</p>
+                <p>I am particularly drawn to ${company}'s innovative approach and would be honored to contribute to your mission. I've attached my resume for your review and would welcome the opportunity to discuss how my skills and experiences align with your needs.</p>
+                <p>Thank you for considering my application. I look forward to the possibility of discussing this opportunity further.</p>
+            `;
+            
+            // Generate unique URL
+            const uniqueId = 'letter-' + Math.random().toString(36).substr(2, 9);
+            const uniqueUrl = window.location.origin + '/cover-letter/' + uniqueId;
+            
+            // Save to localStorage
+            const letterData = {
+                fullName,
+                email,
+                position,
+                company,
+                background,
+                whyHire,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem(uniqueId, JSON.stringify(letterData));
+            
+            // Show result section
+            document.getElementById('letterResult').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('letterResult').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Set current year in footer
+        document.querySelector('footer .col-md-6 p').innerHTML = `&copy; ${new Date().getFullYear()} DevResumeBuilder. All rights reserved.`;
+    </script>
+</body>
+</html>
